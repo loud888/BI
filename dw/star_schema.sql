@@ -9,40 +9,31 @@ CREATE TABLE Dim_Student (
     Gender VARCHAR(10),
     Age INT,
     AgeGroup VARCHAR(10),
-    Address VARCHAR(20),
+    Address VARCHAR(20),           -- U = Urban, R = Rural
     FamilySize VARCHAR(10),
     ParentStatus VARCHAR(10),
-    MotherEdu VARCHAR(30),
-    FatherEdu VARCHAR(30),
-    Internet VARCHAR(10)
-);
-
-CREATE TABLE Dim_Time (
-    TimeKey SERIAL PRIMARY KEY,
-    Semester VARCHAR(20),
-    AcademicYear VARCHAR(20)
+    MotherEdu INT,
+    FatherEdu INT,
+    StudyTime INT
 );
 
 CREATE TABLE Dim_Course (
     CourseKey SERIAL PRIMARY KEY,
-    Subject VARCHAR(20),        -- Math or Portuguese
+    Subject VARCHAR(20),           -- Math or Portuguese
     CourseName VARCHAR(50)
 );
 
-CREATE TABLE Dim_Class (
-    ClassKey SERIAL PRIMARY KEY,
-    School VARCHAR(10),
-    ClassName VARCHAR(50)
+CREATE TABLE Dim_Time (
+    TimeKey SERIAL PRIMARY KEY,
+    Semester VARCHAR(20)
 );
 
--- ==================== FACT TABLE ====================
-
+-- Fact Table
 CREATE TABLE Fact_StudentGrades (
     FactID SERIAL PRIMARY KEY,
     StudentKey INT REFERENCES Dim_Student(StudentKey),
-    TimeKey INT REFERENCES Dim_Time(TimeKey),
     CourseKey INT REFERENCES Dim_Course(CourseKey),
-    ClassKey INT REFERENCES Dim_Class(ClassKey),
+    TimeKey INT REFERENCES Dim_Time(TimeKey),
     
     G1 DECIMAL(4,2),
     G2 DECIMAL(4,2),
@@ -50,9 +41,8 @@ CREATE TABLE Fact_StudentGrades (
     AverageScore DECIMAL(4,2),
     Absences INT,
     Failures INT,
-    PassFlag INT CHECK (PassFlag IN (0,1))
+    PassFlag INT
 );
-
 -- Index
 CREATE INDEX idx_student ON Fact_StudentGrades(StudentKey);
 CREATE INDEX idx_time ON Fact_StudentGrades(TimeKey);
