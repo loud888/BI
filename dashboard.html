@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard BI Sinh Viên</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .charts { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .chart-box { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 45%; }
+    </style>
+</head>
+<body>
+    <h1>📊 HỆ THỐNG BI - PHÂN TÍCH DỮ LIỆU SINH VIÊN</h1>
+    
+    <div style="display:flex; justify-content:center; gap:30px; margin:20px 0;">
+        <div class="card"><h3>Tổng sinh viên</h3><h2>1,044</h2></div>
+        <div class="card"><h3>Điểm TB</h3><h2>11.85</h2></div>
+        <div class="card"><h3>Tỷ lệ Pass</h3><h2>86.4%</h2></div>
+    </div>
+
+    <div class="charts">
+        <div class="chart-box">
+            <h3>Điểm theo Giới tính</h3>
+            <canvas id="genderChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Điểm theo Khu vực</h3>
+            <canvas id="areaChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        new Chart(document.getElementById('genderChart'), {
+            type: 'bar', data: { labels: ['Nam', 'Nữ'], datasets: [{ label: 'Điểm TB', data: [11.3, 12.2], backgroundColor: ['#3498db','#e91e63'] }] }
+        });
+        new Chart(document.getElementById('areaChart'), {
+            type: 'bar', data: { labels: ['Urban', 'Rural'], datasets: [{ label: 'Điểm TB', data: [12.5, 10.9], backgroundColor: ['#2ecc71','#f39c12'] }] }
+        });
+    </script>
+</body>
+</html>
