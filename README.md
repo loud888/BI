@@ -1,22 +1,23 @@
 # Hệ thống BI Phân tích Dữ liệu Sinh viên
 
 ## Giới thiệu
-Hệ thống Business Intelligence giúp phân tích kết quả học tập của sinh viên dựa trên dataset UCI. Đề tài bao gồm ETL, thiết kế Data Warehouse và trực quan hóa dữ liệu.
+Hệ thống Business Intelligence giúp phân tích kết quả học tập của sinh viên dựa trên dataset UCI.
 
-## Công nghệ sử dụng
+## Công nghệ
 - Database: PostgreSQL
-- ETL: Python (pandas + SQLAlchemy)
+- ETL: Python + SQLAlchemy
 - Dashboard: HTML + Chart.js
-- Công cụ quản lý: DBeaver
 
 ## Cấu trúc dự án
-- `data/raw/` : Chứa 2 file CSV gốc
-- `etl/` : Script ETL
-- `dw/` : Script tạo Star Schema
-- `dashboard.html` : Dashboard trực quan
+- `dashboard.html` → Dashboard trực quan
+- `data/raw/` → Dữ liệu gốc
+- `etl/etl_script.py` → Script ETL
+- `dw/star_schema.sql` → Script tạo bảng
 
-## Hướng dẫn chạy
-```bash
-git clone https://github.com/loud888/BI.git
-cd BI
-python3 etl/etl_script.py
+## Hướng dẫn
+Mở file `dashboard.html` bằng trình duyệt để xem dashboard.
+
+## Nhóm thực hiện
+- Nguyễn Công Minh MSV:B22DCVT343
+
+**Ngày nộp:** 16/05/2026
