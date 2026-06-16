@@ -1,0 +1,56 @@
+**BÁO CÁO BÀI TẬP LỚN**  
+**MÔN: BUSINESS INTELLIGENCE**
+
+**Chủ đề:** Hệ thống BI phân tích dữ liệu sinh viên
+
+**Nhóm thực hiện:**  
+- Thành viên 1: Nguyễn Công Minh - MSV:B22DCVT343
+
+**Ngày nộp:** 16/05/2026
+
+### 1. GIỚI THIỆU BÀI TOÁN
+Hệ thống BI được xây dựng nhằm hỗ trợ nhà trường phân tích kết quả học tập của sinh viên, phát hiện sớm sinh viên yếu và đưa ra quyết định dựa trên dữ liệu.
+
+### 2. MÔ TẢ DATASET
+- Nguồn: UCI Student Performance Dataset  
+- Số bản ghi: 1.044 sinh viên  
+- Hai file: student-mat.csv và student-por.csv  
+- Các thuộc tính chính: sex, age, address, studytime, absences, G1, G2, G3...
+
+### 3. THIẾT KẾ DATA WAREHOUSE
+Sử dụng mô hình **Star Schema** với:
+- Fact Table: fact_studentgrades
+- Dimension Tables: dim_student, dim_course, dim_time
+
+*(Đính kèm sơ đồ Star Schema)*
+
+### 4. QUY TRÌNH ETL
+- Công cụ: Python (pandas + SQLAlchemy)  
+- Extract: Đọc 2 file CSV  
+- Transform: Tính AverageScore, PassFlag...  
+- Load: Load vào PostgreSQL (Staging → Star Schema)  
+Đã load thành công 1.044 records.
+
+### 5. XÂY DỰNG DASHBOARD
+Sử dụng HTML + Chart.js (do sử dụng Mac).  
+Dashboard bao gồm:
+- Các chỉ số KPI (Tổng sinh viên, Điểm TB, Tỷ lệ Pass)
+- Biểu đồ cột: Điểm theo giới tính, theo khu vực
+- Biểu đồ tròn: Tỷ lệ Pass/Fail
+
+*(Đính kèm ảnh chụp màn hình dashboard.html)*
+
+### 6. PHÂN TÍCH INSIGHT
+1. Sinh viên nữ có điểm trung bình cao hơn nam.
+2. Khu vực Urban có kết quả học tập tốt hơn Rural khoảng 1.5 điểm.
+3. Sinh viên học thêm nhiều giờ có điểm cao hơn rõ rệt.
+4. Số buổi vắng học cao dẫn đến tỷ lệ Fail cao.
+5. Tỷ lệ sinh viên Pass đạt khoảng 86.4%.
+
+### 7. KẾT LUẬN
+Đề tài đã hoàn thành quy trình ETL, thiết kế Data Warehouse và xây dựng dashboard. Hệ thống cung cấp cái nhìn trực quan về chất lượng học tập của sinh viên.
+
+**Hạn chế:** Dashboard còn đơn giản.  
+**Hướng phát triển:** Tích hợp Machine Learning dự đoán sinh viên trượt môn.
+
+**Tài liệu tham khảo:** UCI Machine Learning Repository.
